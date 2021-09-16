@@ -21,8 +21,8 @@
                 <div class="col-12">
                     <div class="navbar-header brand">
                         <a class="logo-home" href="${URLUtils.url('Home-Show')}" title="${ Resource.msgf('global.homepage.tooltip', 'common', null, Resource.msg('global.storename', 'common', null), Resource.msg('global.home', 'common', null)) }">
-                            <img class="hidden-md-down" src="${URLUtils.staticURL('/images/logo.svg')}" alt="${Resource.msg('global.storename', 'common', null)}" />
-                            <img class="d-lg-none" src="${URLUtils.staticURL('/images/logo-small.svg')}" alt="${Resource.msg('global.storename', 'common', null)}" />
+                            <img class="hidden-md-down" src="${URLUtils.staticURL('/images/delmonte_logo.png')}" height="40" width="100" alt="${Resource.msg('global.storename', 'common', null)}" />
+                            <img class="d-lg-none" src="${URLUtils.staticURL('/images/delmonte_logo.png')}" height="40" width="100" alt="${Resource.msg('global.storename', 'common', null)}" />
                         </a>
                     </div>
                     <div class="navbar-header">
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="main-menu navbar-toggleable-sm menu-toggleable-left multilevel-dropdown d-none d-md-block" id="sg-navbar-collapse">
+        <div class="main-menu navbar-toggleable-sm menu-toggleable-left multilevel-dropdown d-none d-md-block" style="background: #d2e7a8;" id="sg-navbar-collapse">
             <div class="container">
                 <div class="row">
                     <isinclude url="${URLUtils.url('Page-IncludeHeaderMenu')}"/>

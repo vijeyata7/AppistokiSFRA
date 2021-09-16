@@ -1,4 +1,4 @@
-<footer id="footercontent">
+<footer id="footercontent" style="background: #79a61f;">
     <div class="container">
         <div class="footer-container row">
             <div class="footer-item col-sm-3 store">
