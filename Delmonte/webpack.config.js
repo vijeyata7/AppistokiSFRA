@@ -7,7 +7,7 @@ var path = require('path');
         name: 'js',
         entry: sgmfScripts.createJsPath(),
         output: {
-            path: path.resolve('./cartridges/site_delmonte/cartridge/static'),
+            path: path.resolve('./cartridges/app_custom_sfmc/cartridge/static'),
             filename: '[name].js'
         }
     }, {
@@ -15,8 +15,8 @@ var path = require('path');
         name: 'scss',
         entry: sgmfScripts.createScssPath(),
         output: {
-            path: path.resolve('./cartridges/site_delmonte/cartridge/static'),
-            filename: '[name].css'
+            path: path.resolve('./cartridges/app_custom_sfmc/cartridge/static'),
+            filename: '[name].scss'
         },
         module: {
             rules: [{
@@ -26,13 +26,6 @@ var path = require('path');
                         loader: 'css-loader',
                         options: {
                             url: false
-                        }
-                    }, {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: [
-                                require('autoprefixer')()
-                            ]
                         }
                     }, {
                         loader: 'sass-loader',

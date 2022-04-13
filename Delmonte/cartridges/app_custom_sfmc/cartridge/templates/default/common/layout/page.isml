@@ -1,0 +1,116 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+
+<isinclude template="/components/modules" sf-toolkit="off" />
+
+<!DOCTYPE html>
+<html lang="${require('dw/util/Locale').getLocale(request.getLocale()).getLanguage()}">
+    <head>
+        <!--[if gt IE 9]><!-->
+            <isinclude sf-toolkit="off" template="/common/scripts" />
+        <!--<![endif]-->
+        <isinclude template="/common/htmlHead" />
+        <isif condition="${pdict.canonicalUrl}" >
+            <link rel="canonical" href="${pdict.canonicalUrl}"/>
+        </isif>
+        <isactivedatahead/>
+        <isinclude template="/components/schema" />
+
+		<script type="text/javascript" async src="//514000190.collect.igodigital.com/collect.js"></script>
+		<script>
+		var _etmc = [];
+		  _etmc.push(["setOrgId", "514000190"]);
+		  _etmc.push(["setUserInfo", {"email": "${request.getSession().getCustomer().getProfile().getCredentials().login}"}]);
+		  _etmc.push(["trackPageView"]);
+		</script>        
+    </head>
+    <body>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    
+    <style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://appistokisingaporepteltd2-dev-ed.my.salesforce.com',
+			'https://sgb2bcommerce-developer-edition.ap27.force.com/omc',
+			gslbBaseURL,
+			'00D5j000006yS7k',
+			'OMC',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-c2-ukb.salesforceliveagent.com/content',
+				deploymentId: '5725j000000H0bH',
+				buttonId: '5735j000000H1Hy',
+				baseLiveAgentURL: 'https://d.la2-c2-ukb.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I5j000000CeLaEAK_17faba8820e',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://appistokisingaporepteltd2-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+        ${dw.system.HookMgr.callHook('app.template.beforeHeader', 'beforeHeader', pdict) || ''}
+
+        <div class="page" data-action="${pdict.action}" data-querystring="${pdict.queryString}" >
+            <isinclude template="/components/header/pageHeader" />
+            <div role="main" id="maincontent">
+                <isreplace/>
+            </div>
+            <isinclude template="/components/footer/pageFooter" />
+        </div>
+        <div class="error-messaging"></div>
+        <div class="modal-background"></div>
+        <iscontentasset aid="cookie_hint" />
+         <!--[if lt IE 10]>
+            <isinclude sf-toolkit="off" template="/common/scripts" />
+        <![endif]-->
+        <iscomment>
+            hook for Marketing Cloud connector & other integration which need to inject
+            logic at the page end
+            IMPORTANT: Note that this hook will be called to cached as well as uncached pages
+                        which means you need to put privacy information into another remote include
+        </iscomment>
+        ${dw.system.HookMgr.callHook('app.template.afterFooter', 'afterFooter', pdict) || ''}
+        <isinclude url="${URLUtils.url('ConsentTracking-Check')}"/>
+    </body>
+</html>

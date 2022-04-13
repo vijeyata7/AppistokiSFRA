@@ -6,6 +6,11 @@
             <isinclude template="checkout/productCard/productCardProductName" />
         </isif>
     </div>
+    
+    <img class="product-image"
+                    src="${pdict.order.shipping.productLineItems.items[0].images.small[0].url}"
+                    alt="${pdict.order.shipping.productLineItems.items[0].images.small[0].alt}"
+                    title="${pdict.order.shipping.productLineItems.items[0].images.small[0].title}">
 
     <isif condition="${lineItem.productType === 'bundle'}">
         <div class="bundle-includes">${Resource.msg('msg.bundle.includes','cart',null)}</div>
